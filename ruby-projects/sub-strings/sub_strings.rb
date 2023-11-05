@@ -3,28 +3,34 @@
 # It returns a hash listing each substring (case insensitive) that was found
 # in the original string and how many times it was found.
 
-dictionary = ["below", "below", "down","go","going","horn","how","howdy",
+dictionary = ["below", "down","go","going","horn","how","howdy",
   "it","i","low","own","part","partner","sit"]
 
 
 
 
-def substring(word, dictionary)
-  # take word
-  # iterate over dictionary array
-  results_hash = {}
-  word_downcase = word.downcase
-
-  dictionary.each do |item|
-    if item == word_downcase
-      count =  dictionary.count(word_downcase)
-      results_hash.store(word_downcase, count)
+# solution 2:
+def substring(string, dictionary)
+  match_hash = {}
+  dictionary.each do |word|
+    counts = string.downcase.scan(/(?=#{word})/).count
+    if counts.positive?
+      match_hash[word] = counts
     end
   end
-  p  results_hash
-  # if the word parameter matches with any word within the dictionary (i.e dot.match?),
-  # add that word as a key to hash with the value displaying the number of times the
-  # word appeared in the dictionary array.
+  match_hash
 end
 
-substring("Below", dictionary)
+
+
+p substring("Howdy partner, sit down! How's it going?", dictionary)
+
+
+# def substrings(str, dictionary)
+#   hashmap = {}
+#   dictionary.each do |word|
+#     counts = str.downcase.scan(/(?=#{word})/).count
+#     hashmap[word] = counts if counts.positive?
+#   end
+#   hashmap
+# end
