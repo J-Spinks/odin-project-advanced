@@ -13,11 +13,12 @@ def substring(word, dictionary)
   # take word
   # iterate over dictionary array
   results_hash = {}
+  word_downcase = word.downcase
 
   dictionary.each do |item|
-    if item == word
-      count =  dictionary.count(word)
-      results_hash.store(word, count)
+    if item == word_downcase
+      count =  dictionary.count(word_downcase)
+      results_hash.store(word_downcase, count)
     end
   end
   p  results_hash
@@ -26,4 +27,4 @@ def substring(word, dictionary)
   # word appeared in the dictionary array.
 end
 
-substring("below", dictionary)
+substring("Below", dictionary)
